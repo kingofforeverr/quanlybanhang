@@ -47,6 +47,13 @@ namespace quanlybanhang
             string sThoiGian = txtTime.Value.ToString("HH:mm:ss");
             string sNgay = dateTimePicker1.Value.ToString("yyyy-MM-dd");
             string sSoluong = txtSoLuong.Text;
+
+            if (string.IsNullOrEmpty(sMaBan) || string.IsNullOrEmpty(sMaKH) ||
+            string.IsNullOrEmpty(sSoluong) )
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string sQuery = "insert into ThongTinDatBan values(@id, @stt, @makh,@time,@ngay,@soluong)";
 
             SqlCommand cmd = new SqlCommand(sQuery, con);
